@@ -1,16 +1,28 @@
-import React from 'react'
-import Main from './Main'
-import Project1 from './Project1'
-import Project2 from './Project2'
-import Table from './Table'
+import React, { useState } from 'react'
+import Navbar from './Navbar'
+import Card from './Card'
 
 const App = () => {
+  const data = [
+    {songname: "Tum Hi Ho",  artist: "Arijit Singh", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRavb4iXjL2lM5hn7SpfP7DGRW5bKr8EqGZxBSx8nYSeGUZib9LqDB2HZV68lSWbVsSsXA&usqp=CAU", added: false},
+    {songname: "No Love", artist: "Shubh", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv-pcjjK3yhLgTxQD5GPPFu2F5pEasiLIjHjuHcW_4i2SQIdTmJV0aikP4rR7435ZNI1M&usqp=CAU", added: false},
+    {songname: "Mi Amor", artist: "Sharn", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5dOBFhJMLFMFa9BkHEFaGy7iInmgO57sxqA&s", added: false},
+    {songname: "One Love", artist: "Shubh", image: "https://i.ytimg.com/vi/0pWsCiBvLOk/sddefault.jpg", added: false},
+  ]
+
+  const [set, setVal] = useState(data);
+  const handleClick = ()=>{
+    
+  }
+
   return (
-    <div>
-      <Main />
-      <Project1 />
-      <Project2 />
-      <Table />
+    <div className='w-full h-screen bg-zinc-300'>
+      <Navbar />
+      <div className='flex px-10 gap-10 flex-wrap'>
+        {set.map(items=>(
+          <Card data={items} handleClick={handleClick} />
+        ))}
+      </div>
     </div>
   )
 }
