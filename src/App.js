@@ -12,8 +12,9 @@ const App = () => {
 
   const [set, setVal] = useState(data);
   const handleClick = ()=>{
-    
+
   }
+
 
   return (
     <div className='w-full h-screen bg-zinc-300'>
