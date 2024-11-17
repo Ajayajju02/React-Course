@@ -11,17 +11,22 @@ const App = () => {
   ]
 
   const [set, setVal] = useState(data);
-  const handleClick = ()=>{
-
+  const handleClick = (index)=>{
+    setVal ((prev)=>{
+      return prev.map((item, itemindex)=>{
+        if(itemindex === index) return {...item, added: !item.added};
+        return item;
+      })
+    })
   }
 
 
   return (
     <div className='w-full h-screen bg-zinc-300'>
-      <Navbar />
+      <Navbar data={set} />
       <div className='flex px-10 gap-10 flex-wrap'>
-        {set.map(items=>(
-          <Card data={items} handleClick={handleClick} />
+        {set.map((items, index)=>(
+          <Card data={items} handleClick={handleClick} index={index} key={index}/>
         ))}
       </div>
     </div>
