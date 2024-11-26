@@ -1,9 +1,25 @@
-import React from 'react'
-import Form3 from './Form3'
+import React, { useState } from 'react'
+import Cards from './Components.js/Cards'
+import Form from './Components.js/Form'
 
-const App = () => {
+function App() {
+  const [users, setUsers] = useState([]);
+
+  const handleClick = (data)=>{
+    setUsers([...users, data])
+  }
+
+  const handleRemove = (id) =>{
+    setUsers(()=>users.filter((item, index)=>index!=id));
+  }
+
   return (
-    <Form3 />
+    <div className='w-full h-screen bg-zinc-300 flex items-center justify-center'>
+      <div className=' mx-auto'>
+        <Cards handleRemove={handleRemove} users={users} />
+        <Form handleClick={handleClick} />
+      </div>
+    </div>
   )
 }
 
